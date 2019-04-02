@@ -5,7 +5,6 @@ import sagas from './sagas'
 import reducers from './reducers'
 
 const sagaMiddleware = createSagaMiddleware()
-
 export default createStore(
     reducers,
     applyMiddleware(sagaMiddleware)

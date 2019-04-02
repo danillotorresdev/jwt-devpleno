@@ -1,52 +1,60 @@
-import {createReducer} from 'reduxsauce'
-import {Types} from '../actionCreators'
+import { createReducer } from 'reduxsauce'
+import { Types } from '../actionCreators'
 
-export const INITIAL_STATE ={
+export const INITIAL_STATE = {
     isAuthing: false,
-    isAuth : false,
-    isSigningin: false,
+    isAuth: false,
+    isSigningIn: false,
+    isSaving: false,
+    saved: false,
     user: {},
     error: false,
     errorMessage: ''
+
 }
 
+/** 
+ * Reducer
+*/
 export const signinRequest = (state = INITIAL_STATE, action) => {
-    //Copia todo mundo fo state e faz um spreadOparator. 
     return {
         ...state,
         isSigningIn: true,
         error: false,
         errorMessage: ''
     }
-
 }
 
-export const signInSuccess = (state = INITIAL_STATE, action) => {
-    //Copia todo mundo fo state e faz um spreadOparator. 
+/** 
+ * Reducer
+*/
+export const signinSuccess = (state = INITIAL_STATE, action) => {
     return {
         ...state,
         isSigningIn: false,
         isAuth: true,
+        error: false,
         user: action.user
     }
-
 }
 
-export const sigInFailure = (state = INITIAL_STATE, action) => {
-    //Copia todo mundo fo state e faz um spreadOparator. 
+/** 
+ * Reducer
+*/
+export const signinFailure = (state = INITIAL_STATE, action) => {
     return {
         ...state,
-        isSigningin: false,
+        isSigningIn: false,
         error: true,
         errorMessage: action.error
     }
-
 }
+
 //mapeia as actions para os reducers
 export const HANDLERS = {
     [Types.SIGNIN_REQUEST]: signinRequest,
-    [Types.SINGIN_SUCCESS]: signInSuccess,
-    [Types.SINGIN_FAILURE]: sigInFailure
+    [Types.SIGNIN_SUCCESS]: signinSuccess,
+    [Types.SIGNIN_FAILURE]: signinFailure
 }
 
 export default createReducer(INITIAL_STATE, HANDLERS)
