@@ -50,31 +50,38 @@ export const signinFailure = (state = INITIAL_STATE, action) => {
     }
 }
 
+/** 
+ * Reducer
+*/
 export const authRequest = (state = INITIAL_STATE, action) => {
     return {
         ...state,
-        isSigningIn: false,
-        error: true,
-        errorMessage: action.error
+        isSigningIn: true,
+        errorMessage: ''
     }
 }
 
+/** 
+ * Reducer
+*/
 export const authSuccess = (state = INITIAL_STATE, action) => {
     return {
         ...state,
         isSigningIn: false,
-        error: true,
-        errorMessage: action.error
+        isAuth: true,
+        error: false,
+        user: action.user
     }
 }
 
+/** 
+ * Reducer
+*/
 export const authFailure = (state = INITIAL_STATE, action) => {
     return {
         ...state,
         isSigningIn: false,
-        isAuth: false,
-        error: true,
-        errorMessage: action.error
+        isAuth: false
     }
 }
 

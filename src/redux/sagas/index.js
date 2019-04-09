@@ -4,6 +4,8 @@ import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 import ActionCreators from '../actionCreators'
 
+import { getRuns, createRun } from './runs'
+
 function* login(action) {
     let token = localStorage.getItem('token')
 
@@ -14,10 +16,10 @@ function* login(action) {
     //se veio um token, significa que estamos logados
     if (login.data.token) {
         token = login.data.token
-        localStorage.setItem("token", token)
+        localStorage.setItem('token', token)
 
         //descompacta o token
-        const user = jwtDecode(token)
+        const user =  jwtDecode(token)
         //quem é o usuario?
         localStorage.setItem('user', user)
         yield put(ActionCreators.signinSuccess(user))
@@ -51,7 +53,8 @@ export default function* rootSaga() {
     yield all([
         takeLatest(Types.SIGNIN_REQUEST, login),
         takeLatest(Types.AUTH_REQUEST, auth),
-        put(ActionCreators.authRequest('No token')),
-
+        takeLatest(Types.GET_RUNS_REQUEST, getRuns),
+        takeLatest(Types.CREATE_RUN_REQUEST, createRun),
+        put(ActionCreators.authRequest('No token'))
     ])
 }

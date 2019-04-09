@@ -22,6 +22,7 @@ class Login extends Component {
         this.props.login(email, passwd)
     }
     render() {
+        
         if(this.props.auth.isAuth){
             if(this.props.auth.user.role === 'admin'){
                 return <Redirect to='/admin' />
