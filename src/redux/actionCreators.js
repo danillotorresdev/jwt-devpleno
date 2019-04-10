@@ -12,6 +12,9 @@ export const {
     authSuccess: ['user'],
     authFailure: null,
 
+    destroyAuthRequest: null,
+    destroyAuthSuccess: null,
+
     getRunsRequest: null,
     getRunsSuccess: ['runs'],
     getRunsFailure: null,
