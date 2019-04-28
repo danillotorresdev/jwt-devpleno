@@ -13,6 +13,7 @@ import Home from './screens/Home'
 import Admin from './screens/admin'
 import Restrito from './screens/restrito'
 import Login from './screens/Login'
+import CreateAccount from './screens/CreateAccount'
 
 class App extends Component {
 
@@ -25,6 +26,7 @@ class App extends Component {
             <Route path='/admin' component={Admin} />
             <Route path='/restrito' component={Restrito} />
             <Route path='/login' component={Login} />
+            <Route path='/create-account' component={CreateAccount} />
             
           </Container>
         </Router>
