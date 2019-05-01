@@ -15,10 +15,15 @@ export const {
     destroyAuthRequest: null,
     destroyAuthSuccess: null,
 
-    getRunsRequest: null,
+    getRunsRequest: ['admin'],
     getRunsSuccess: ['runs'],
     getRunsFailure: null,
 
+    removeRunRequest: ['id'],
+    removeRunSuccess: ['id'],
+    removeRunFailure: ['error'],
+
+    createRunReset: null,
     createRunRequest: ['run'],
     createRunSuccess: ['run'],
     createRunFailure: ['error'],

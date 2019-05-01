@@ -5,7 +5,7 @@ import React from 'react'
 const Distance = ({ distance, metric }) => {
     let distanceStr = ''
     if (metric === 'metric') {
-        distanceStr = distance + ' km'
+        distanceStr = distance.toFixed(2) + ' km'
     } else {
         //1km = 0,621371 mi
         const distanceMi = distance * 0.621371

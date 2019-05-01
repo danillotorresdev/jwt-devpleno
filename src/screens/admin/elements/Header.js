@@ -10,9 +10,11 @@ const Header = props => {
             <Menu.Item as={Link} to='/'> <Image src='/logo.png' size='small' /></Menu.Item>
             <Menu.Item as={Link} to='/admin' >Home</Menu.Item>
             <Menu.Item as={Link} to='/admin/users' >Usuarios</Menu.Item>
+            <Menu.Item as={Link} to='/admin/runs' >Corridas</Menu.Item>
             <Menu.Menu position="right">
                 <Dropdown item text={props.auth.user.name}>
                     <Dropdown.Menu>
+                        <Dropdown.Item as={Link} to='/restrito' text='Modo usuário' />
                         <Dropdown.Item text='Minha conta' />
                         <Dropdown.Item text='Alterar Senha' />
                         <Dropdown.Item onClick={props.logout} text='Sair' />
