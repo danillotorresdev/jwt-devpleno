@@ -6,6 +6,7 @@ import { getRuns, createRun, removeRun } from './runs'
 
 import {auth, login, destroyAuth, updateProfile, createProfile} from './auth'
 
+import {getUsers, removeUser} from './users'
 
 export default function* rootSaga() {
     console.log('root Saga')
@@ -18,6 +19,8 @@ export default function* rootSaga() {
         takeLatest(Types.UPDATE_PROFILE_REQUEST, updateProfile),
         takeLatest(Types.CREATE_PROFILE_REQUEST, createProfile),
         takeLatest(Types.REMOVE_RUN_REQUEST, removeRun),
+        takeLatest(Types.GET_USERS_REQUEST, getUsers),
+        takeLatest(Types.REMOVE_USER_REQUEST, removeUser),
 
         put(ActionCreators.authRequest('No token'))
     ])

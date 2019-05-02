@@ -3,9 +3,9 @@ import { Route, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Header from './elements/Header'
 import Runs from './Runs'
-const Home = props => <h1>Home Admin</h1>
+import Users from './Users'
 
-const Users = props => <h1>Users Admin</h1>
+const Home = props => <h1>Home Admin</h1>
 
 const Admin = props => {
     //se nao estiver logado ele vai pra login
