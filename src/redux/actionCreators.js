@@ -23,6 +23,10 @@ export const {
     getUsersSuccess: ['users'],
     getUsersFailure: null,
 
+    getUserRequest: ['id'],
+    getUserSuccess: ['user'],
+    getUserFailure: null,
+
     removeRunRequest: ['id'],
     removeRunSuccess: ['id'],
     removeRunFailure: ['error'],
@@ -40,6 +44,11 @@ export const {
     updateProfileRequest: ['user'],
     updateProfileSuccess: ['user'],
     updateProfileFailure: ['error'],
+
+    updateUserReset: null,
+    updateUserRequest: ['user'],
+    updateUserSuccess: ['user'],
+    updateUserFailure: ['error'],
 
     createProfileReset: null,
     createProfileRequest: ['user'],
