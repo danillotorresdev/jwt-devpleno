@@ -3,11 +3,8 @@ import ActionCreators from '../../redux/actionCreators'
 import { connect } from 'react-redux'
 import { Table, Button, Segment, Label } from 'semantic-ui-react'
 
-import Duration from '../elements/Duration'
-import Distance from '../elements/Distance'
 import { Link } from 'react-router-dom'
 
-import DateStr from '../elements/DateStr'
 
 class Users extends Component {
 

@@ -15,8 +15,8 @@ const Header = props => {
                 <Dropdown item text={props.auth.user.name}>
                     <Dropdown.Menu>
                         <Dropdown.Item as={Link} to='/restrito' text='Modo usuário' />
-                        <Dropdown.Item text='Minha conta' />
-                        <Dropdown.Item text='Alterar Senha' />
+                        <Dropdown.Item as={Link} to='/restrito/my-account' text='Minha conta' />
+                        <Dropdown.Item as={Link} to='/restrito/change-password' text='Alterar Senha' />
                         <Dropdown.Item onClick={props.logout} text='Sair' />
                     </Dropdown.Menu>
                 </Dropdown>

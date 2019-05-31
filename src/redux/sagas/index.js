@@ -4,25 +4,32 @@ import ActionCreators from '../actionCreators'
 
 import { getRuns, createRun, removeRun } from './runs'
 
-import {auth, login, destroyAuth, updateProfile, createProfile} from './auth'
+import { auth, login, destroyAuth, updateProfile, createProfile } from './auth'
 
-import {getUsers, removeUser, getUser, updateUser} from './users'
+import { getUsers, removeUser, getUser, updateUser } from './users'
+
+import API from '../../service/API'
 
 export default function* rootSaga() {
-    console.log('root Saga')
+    const devURL = 'http://localhost:3001'
+    const prodURL = 'http://api.devpleno.com'
+    const baseURL = process.env.NODE_ENV === 'development' ? devURL : prodURL
+    const api = new API(baseURL)
+
+
     yield all([
-        takeLatest(Types.SIGNIN_REQUEST, login),
-        takeLatest(Types.AUTH_REQUEST, auth),
-        takeLatest(Types.GET_RUNS_REQUEST, getRuns),
-        takeLatest(Types.CREATE_RUN_REQUEST, createRun),
+        takeLatest(Types.SIGNIN_REQUEST, login({ api })),
+        takeLatest(Types.AUTH_REQUEST, auth({ api })),
+        takeLatest(Types.GET_RUNS_REQUEST, getRuns({ api })),
+        takeLatest(Types.CREATE_RUN_REQUEST, createRun({ api })),
         takeLatest(Types.DESTROY_AUTH_REQUEST, destroyAuth),
-        takeLatest(Types.UPDATE_PROFILE_REQUEST, updateProfile),
-        takeLatest(Types.CREATE_PROFILE_REQUEST, createProfile),
-        takeLatest(Types.REMOVE_RUN_REQUEST, removeRun),
-        takeLatest(Types.GET_USERS_REQUEST, getUsers),
-        takeLatest(Types.REMOVE_USER_REQUEST, removeUser),
-        takeLatest(Types.GET_USER_REQUEST, getUser),
-        takeLatest(Types.UPDATE_USER_REQUEST, updateUser),
+        takeLatest(Types.UPDATE_PROFILE_REQUEST, updateProfile({ api })),
+        takeLatest(Types.CREATE_PROFILE_REQUEST, createProfile({ api })),
+        takeLatest(Types.REMOVE_RUN_REQUEST, removeRun({ api })),
+        takeLatest(Types.GET_USERS_REQUEST, getUsers({ api })),
+        takeLatest(Types.REMOVE_USER_REQUEST, removeUser({ api })),
+        takeLatest(Types.GET_USER_REQUEST, getUser({ api })),
+        takeLatest(Types.UPDATE_USER_REQUEST, updateUser({ api })),
 
         put(ActionCreators.authRequest('No token'))
     ])
